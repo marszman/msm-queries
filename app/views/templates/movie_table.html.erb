@@ -1,1 +1,65 @@
-<div><%= @z %></div>
+    <h1>
+      List of all movies
+    </h1>
+
+  <table border="1">
+
+    <tr>
+      <th>
+        ID
+      </th>
+
+      <th>
+        Image
+      </th>
+
+      <th>
+        Title
+      </th>
+
+      <th>
+        Year
+      </th>
+
+      <th>
+        Director
+      </th>
+
+      <th>
+      </th>
+    </tr>
+
+    <% @movie_data.each do | current_movie | %>
+    <% current_director = @director_data.at(0).name %>
+
+    <tr>
+      <td>
+        <%=current_movie.id%>
+      </td>
+
+      <td>
+        <img src=<%=current_movie.image%> style="width:250px;">
+      </td>
+
+      <td>
+        <%=current_movie.title%>
+      </td>
+
+      <td>
+        <%=current_movie.year%>
+      </td>
+     
+      <td>
+        <%=current_director%>
+      </td>
+
+      <td>
+        <a href=<%="/movies/#{current_movie.id}"%>>
+          Show details
+        </a>
+      </td>
+    </tr>
+
+    <% end %>
+
+  </table>
