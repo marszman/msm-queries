@@ -7,8 +7,8 @@ class MoviesController < ApplicationController
   end
 
   def movie_selection
-
-    
+    @movie_data = Movie.all
+    @director_data = Director.all
     render({ :template => "templates/movie_view" })
   end
 

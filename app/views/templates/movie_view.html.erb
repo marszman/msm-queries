@@ -1,0 +1,79 @@
+    <% current_movie_id = params.fetch("movie_id").to_i %>
+    <% current_movie_data = @movie_data.where({ :id => current_movie_id })  %>
+    <% current_movie = current_movie_data[0]  %>
+
+    <% current_director_id = current_movie.director_id %>
+    <% current_director_data = @director_data.where({ :id => current_director_id })  %>
+    <% current_director = current_director_data[0].name  %>
+
+<h1>
+  Movie #
+  <%=current_movie.id%>
+   details
+</h1>
+
+<a href="/movies">
+  Go back
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Title
+  </dt>
+  <dd>
+    <%=current_movie.title%>
+  </dd>
+
+  <dt>
+    Year
+  </dt>
+  <dd>
+    <%=current_movie.year%>
+  </dd>
+
+  <dt>
+    Duration
+  </dt>
+  <dd>
+    <%=current_movie.duration%>
+  </dd>
+
+  <dt>
+    Description
+  </dt>
+  <dd>
+    <%=current_movie.description%>
+  </dd>
+
+  <dt>
+    Image
+  </dt>
+  <dd>
+    <img src=<%=current_movie.image%> style="width:250px;">
+  </dd>
+
+  <dt>
+    Director
+  </dt>
+  <dd>
+    <%=current_director%>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%=current_movie.created_at%>
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%=current_movie.updated_at%>
+  </dd>
+</dl>
+
+<hr>

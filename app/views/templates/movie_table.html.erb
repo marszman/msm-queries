@@ -2,6 +2,8 @@
       List of all movies
     </h1>
 
+  <hr>
+
   <table border="1">
 
     <tr>
@@ -30,7 +32,10 @@
     </tr>
 
     <% @movie_data.each do | current_movie | %>
-    <% current_director = @director_data.at(0).name %>
+
+    <% current_director_id = current_movie.director_id %>
+    <% current_director_data = @director_data.where({ :id => current_director_id })  %>
+    <% current_director = current_director_data[0].name  %>
 
     <tr>
       <td>
