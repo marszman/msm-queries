@@ -18,4 +18,10 @@ class DirectorsController < ApplicationController
     render({ :template => "templates/director_eldest_view" })
   end
 
+  def director_selection
+
+    
+    render({ :template => "templates/director_view" })
+  end
+
 end

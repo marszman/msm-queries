@@ -6,4 +6,10 @@ class MoviesController < ApplicationController
     render({ :template => "templates/movie_table" })
   end
 
+  def movie_selection
+
+    
+    render({ :template => "templates/movie_view" })
+  end
+
 end
