@@ -1,10 +1,10 @@
-    <% current_movie_id = params.fetch("movie_id").to_i %>
-    <% current_movie_data = @movie_data.where({ :id => current_movie_id })  %>
-    <% current_movie = current_movie_data[0]  %>
+<% current_movie_id = params.fetch("movie_id").to_i %>
+<% current_movie_data = @movie_data.where({ :id => current_movie_id })  %>
+<% current_movie = current_movie_data[0]  %>
 
-    <% current_director_id = current_movie.director_id %>
-    <% current_director_data = @director_data.where({ :id => current_director_id })  %>
-    <% current_director = current_director_data[0].name  %>
+<% current_director_id = current_movie.director_id %>
+<% current_director_data = @director_data.where({ :id => current_director_id })  %>
+<% current_director_name = current_director_data[0].name  %>
 
 <h1>
   Movie #
@@ -58,7 +58,7 @@
     Director
   </dt>
   <dd>
-    <%=current_director%>
+    <%=current_director_name%>
   </dd>
 
   <dt>

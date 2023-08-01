@@ -1,0 +1,125 @@
+<% current_actor_id = params.fetch("actor_id").to_i %>
+<% current_actor_data = @actor_data.where({ :id => current_actor_id })  %>
+<% current_actor = current_actor_data[0]  %>
+
+<h1>
+  Actor #
+  <%=current_actor.id%> 
+  details
+</h1>
+
+<a href="/actors">
+  Go back
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Name
+  </dt>
+  <dd>
+    <%=current_actor.name%>
+  </dd>
+
+  <dt>
+    Dob
+  </dt>
+  <dd>
+    <%=current_actor.dob%>
+  </dd>
+
+  <dt>
+    Bio
+  </dt>
+  <dd>
+    <%=current_actor.bio%>
+  </dd>
+
+  <dt>
+    Image
+  </dt>
+  <dd>
+    <img src=<%=current_actor.image%> style="width:250px;">
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%=current_actor.created_at%>
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%=current_actor.updated_at%>
+  </dd>
+</dl>
+
+<hr>
+
+<h2>Filmography</h2>
+
+<table border="1">
+  <tr>
+    <th>
+      Title
+    </th>
+
+    <th>
+      Year
+    </th>
+
+    <th>
+      Director
+    </th>
+
+    <th>
+      Character name
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+<% current_character_data = @character_data.where({ :actor_id => current_actor_id })  %>
+
+  <% current_character_data.each do | current_character | %>
+
+    <% current_movie_id = current_character.movie_id %>
+    <% current_movie_data = @movie_data.where({ :id => current_movie_id })  %>
+    <% current_movie = current_movie_data[0]  %>
+
+    <% current_director_id = current_movie.director_id %>
+    <% current_director_data = @director_data.where({ :id => current_director_id })  %>
+    <% current_director_name = current_director_data[0].name  %>
+
+    <tr>
+      <td>
+        <%=current_movie.title%>
+      </td>
+
+      <td>
+        <%=current_movie.year%>
+      </td>
+
+      <td>
+        <%=current_director_name%>
+      </td>
+
+      <td>
+        <%=current_character.name%>
+      </td>
+
+      <td>
+        <a href=<%="/movies/#{current_movie.id}"%>>
+          Show details
+        </a>
+      </td>
+    </tr>
+
+  <% end %>
+
+</table>
