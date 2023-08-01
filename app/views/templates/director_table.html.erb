@@ -1,1 +1,57 @@
-hi3
+<h1>
+  List of all directors
+</h1>
+
+<hr>
+
+<table border="1">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Image
+    </th>
+
+    <th>
+      Name
+    </th>
+
+    <th>
+      Dob
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @director_data.each do | current_director | %>
+
+  <tr>
+    <td>
+      <%=current_director.id%>
+    </td>
+
+    <td>
+      <img src=<%=current_director.image%> style="width:250px;">
+    </td>
+
+    <td>
+      <%=current_director.name%>
+    </td>
+
+    <td>
+      <%=current_director.dob%>
+    </td>
+
+    <td>
+      <a href=<%="/directors/#{current_director.id}"%>>
+        Show details
+      </a>
+    </td>
+  </tr>
+
+  <% end %>
+
+</table>

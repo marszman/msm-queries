@@ -1,1 +1,12 @@
-hi4
+<% director_youngest = @director_youngest_data[0] %>
+
+<h1>Youngest director</h1>
+
+<p>The youngest director in our dataset right now is 
+<a href=<%"/directors/#{director_youngest.id}"%>><%=director_youngest.name%>,</a>
+ born on 
+<%= director_youngest.dob.strftime("%B %e, %Y") %>
+.
+</p>
+
+<p>(<a href="http://strftime.net/" target="_blank">http://strftime.net/</a> is handy for putting together the formatting strings for the <code>.strftime</code> method.)</p>
