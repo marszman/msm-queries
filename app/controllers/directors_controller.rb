@@ -12,13 +12,14 @@ class DirectorsController < ApplicationController
   end
 
   def youngest_directors_page
-    @director_youngest_data = Director.all.order({ :dob => :desc })
-
+    director_filtered_data = Director.where.not({ :dob => nil })
+    @director_youngest_data = director_filtered_data.all.order({ :dob => :desc })
     render({ :template => "templates/director_youngest_view" })
   end
 
   def eldest_directors_page
-    @director_eldest_data = Director.all.order({ :dob => :asc })
+    director_filtered_data = Director.where.not({ :dob => nil })
+    @director_eldest_data = director_filtered_data.all.order({ :dob => :asc })
     render({ :template => "templates/director_eldest_view" })
   end
 
